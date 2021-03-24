@@ -1,6 +1,3 @@
-<html>
-<head>
-
 <style>
 /*use video background*/
 #myVideo {
@@ -9,6 +6,7 @@
   bottom: 0;
   min-width: 100%; 
   min-height: 100%;
+ z-index: -1;
 }
 /*text position*/
 .content {
@@ -19,25 +17,36 @@
   width: 100%;
   padding: 20px;
 }
-
+a.a_centered
+{
+font-family:sans-serif;
+font-size:60px;
+position: fixed;
+left: 50%;
+top: 50%;
+width: 200px;
+margin-left: -100px;
+margin-top: -30px;
+font-family:sans-serif;
+font-size: 60px;
+color:  #f1f1f1;
+border: solid;
+}
 
 </style>
 </head>
 <body>
-
-<div id="video">
+<!--<button type="button">Click Me!</button>-->
+<a href="https://google.com" class="a_centered">Lets go wonder</a>
 <video autoplay muted loop id="myVideo">
   <source src="coffee.mp4" type="video/mp4">
 </video>
-</div>
+
+
 
 <div class="content">
   <h1 style="font-family:sans-serif;font-size:60px;"align="center" valign="center";>Café in Taipei</h1>
   <p  style="font-family:monospace;"align="center" valign="center">suitable places for your needs</p>
-  
-</table>
 </div>
-
-
 </body>
 </html>
