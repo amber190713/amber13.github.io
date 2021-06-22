@@ -1,0 +1,181 @@
+<head>
+	<meta charset="utf-8">
+	<title>Café in Taipei</title>
+
+</head>
+<style>
+body {
+  background-color: SlateBlue;
+}
+.card{
+	width:200px;
+	height:230px;
+	display:inline-block;
+	border-radius:10px;
+	padding:15px 25px;
+	box-sizing:border-box;
+	cursor:pointer;
+	margin:10px 15px;
+	background-position:center;
+	background-size:cover;
+	transition:transform 0.5s;
+}
+.card:hover{
+transform:translateY(-10px);
+}
+.q1-1{
+background-image:url(pic1.jpg);
+position:absolute;
+top:40%;
+left:25%;
+}
+.q1-2{
+background-image:url(pic2.jpg);
+position:absolute;
+top:40%;
+left:50%;
+}
+.q2-1{
+background-image:url(pic6.jpg);
+position:absolute;
+top:40%;
+left:25%;
+}
+.q2-2{
+background-image:url(pic5.jpg);
+position:absolute;
+top:40%;
+left:50%;
+}
+.q3-1{
+background-image:url(pic3.jpg);
+position:absolute;
+top:40%;
+left:25%;
+}
+.q3-2{
+background-image:url(pic4.jpg);
+position:absolute;
+top:40%;
+left:50%;
+}
+h1{
+font-size:35px;
+font-family:Arial;
+color:#fff;
+position:absolute;
+top:15%;
+left:25%;
+}
+audio{
+position:absolute;
+top:85%;
+left:35%;
+}
+</style>
+<body>
+
+   
+	<div id="q1">
+	<audio id="cafeaudio" controls >
+	<source src="cafe.mp3" type="audio/mpeg">
+	</audio>
+		<h1>Paly the music.When you look around,<br>what do you think you might see?</h1>
+		<button onclick="Func1_1()">
+         <div class="card q1-1" ></div>
+      </button>
+		<button onclick="Func1_2()">
+         <div class="card q1-2"></div>
+      </button>
+   </div>
+   <div id="q2" style="display:none">
+   <audio id="audioID" controls >
+	<source src="oven.mp3" type="audio/mpeg">
+	</audio>
+		<h1>Ding! Something is come out of the oven.<br>What do you think it might be ?</h1>
+		<button onclick="Func2_1()">
+         <div class="card q2-1" ></div>
+      </button>
+		<button onclick="Func2_2()">
+         <div class="card q2-2"></div>
+      </button>
+   </div>
+   
+   <div id="q3" style="display: none">
+   <h1>Which atmosphere do you prefer?</h1>
+      <button onclick="Func3_1()"><div class="card q3-1" ></div></button>
+      <button onclick="Func3_2()"><div class="card q3-2" ></div></button>
+   </div>
+   <div id="result" style="display: none">
+   </div>
+
+   <script>
+      function toggleView(id) {
+         var x = document.getElementById(id);
+         if (x.style.display === "none") {
+            x.style.display = "block";
+         } else {
+            x.style.display = "none";
+         }
+      }
+
+      let ans1
+      function Func1_1() {
+         ans1 = 0
+		 document.getElementById("cafeaudio").muted = true
+         toggleView("q1")
+         toggleView("q2")
+         console.log("You press 1-1, ans1 is now " + ans1)
+      }
+      function Func1_2() {
+         ans1 = 1
+		 document.getElementById("cafeaudio").muted = true
+         toggleView("q1")
+         toggleView("q2")
+         console.log("You press 1-2, ans1 is now " + ans2)
+      }
+
+      let ans2
+      function Func2_1() {
+         ans2 = 0
+         toggleView("q2")
+         toggleView("q3")
+         console.log("You press 2-1, ans2 is now " + ans2)
+      }
+      function Func2_2() {
+         ans2 = 2
+         toggleView("q2")
+         toggleView("q3")
+         console.log("You press 2-2, ans2 is now " + ans2)
+      }
+
+      let ans3
+      function Func3_1() {
+         ans3 = 0
+         toggleView("q3")
+         toggleView("result")
+         console.log("You press 3-1, ans3 is now " + ans3)
+         showResult()
+      }
+      function Func3_2() {
+         ans3 = 4
+         toggleView("q3")
+         toggleView("result")
+         console.log("You press 3-2, ans3 is now " + ans3)
+         showResult()
+      }
+
+      function showResult() {
+         text1 = (ans1==1) ? "Coffee" : "Tea"
+         text2 = (ans2==1) ? "Cookie" : "Cake"
+         text3 = (ans3==1) ? "Classic" : "Rock"
+         const result = `You like ${text1}, ${text2}, and ${text3} music`
+         document.getElementById("result").innerHTML = result
+
+         total = ans1 + ans2 + ans3
+         resultURL = "result" + total + ".html"   // result0.html
+         window.location.href = resultURL         
+      }
+
+   </script>
+</body>
